@@ -1,22 +1,31 @@
 const fs = require('fs');
 const csv = require('csv-parser');
-const Aula = require('../models/Aula');
+const Aula = require('../models/Aula.js');  
 
 class AulaETL {
-    async loadFromCSV(filePath) {
-        const aulas = [];
-        return new Promise((resolve, reject) => {
-            fs.createReadStream(filePath)
-                .pipe(csv())
-                .on('data', (data) => aulas.push(data))
-                .on('end', async () => {
-                    const result = await Aula.insertMany(aulas);
-                    console.log(`✔️ Cargadas ${result.length} aulas`);
-                    resolve(result);
-                })
-                .on('error', reject);
+  static async cargarDatos() {
+    const aulas = [];
+
+    fs.createReadStream('raw_data/Aula.csv')
+      .pipe(csv())
+      .on('data', (row) => {
+
+        aulas.push({
+          aulaID: row.aulaID,
+          codigo: row.codigo,
+          capacidad: row.capacidad
         });
-    }
+      })
+      .on('end', async () => {
+        try {
+
+          await Aula.insertMany(aulas);
+          console.log(`${aulas.length} aulas cargadas`);
+        } catch (err) {
+          console.error('Error al cargar aulas:', err);
+        }
+      });
+  }
 }
 
 module.exports = AulaETL;

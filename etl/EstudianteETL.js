@@ -1,22 +1,37 @@
 const fs = require('fs');
 const csv = require('csv-parser');
-const Estudiante = require('../models/estudiante');
+const Estudiante = require('../models/Estudiante.js'); 
 
 class EstudianteETL {
-    async loadFromCSV(filePath) {
-        const estudiantes = [];
-        return new Promise((resolve, reject) => {
-            fs.createReadStream(filePath)
-                .pipe(csv())
-                .on('data', (data) => estudiantes.push(data))
-                .on('end', async () => {
-                    const result = await Estudiante.insertMany(estudiantes);
-                    console.log(`✔️ Cargados ${result.length} estudiantes`);
-                    resolve(result);
-                })
-                .on('error', reject);
+  static async cargarDatos() {
+    const estudiantes = [];
+
+    fs.createReadStream('../rawData/Estudiante.csv')
+      .pipe(csv())
+      .on('data', (row) => {
+
+        estudiantes.push({
+          estudianteId: row.estudianteId,
+          identificacionType: row.identificacionType,
+          identificacionNumber: row.identificacionNumber,
+          firstName: row.firstName,
+          secondName: row.secondName,
+          apellido: row.apellido,
+          email: row.email,
+          telefono: row.telefono,
+          cursoId: row.cursoId
         });
-    }
+      })
+      .on('end', async () => {
+        try {
+
+          await Estudiante.insertMany(estudiantes);
+          console.log(`${estudiantes.length} estudiantes cargados`);
+        } catch (err) {
+          console.error('Error al cargar estudiantes:', err);
+        }
+      });
+  }
 }
 
 module.exports = EstudianteETL;

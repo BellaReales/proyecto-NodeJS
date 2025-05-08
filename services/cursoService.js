@@ -1,36 +1,35 @@
-// services/cursoService.js
-const { cursos } = require('../models/cursoModel'); // Esto también debe conectarse con la base de datos
+const { cursos } = require('../models/cursoModel'); 
 
 class CursoService {
     // Crear un curso
     static async crearCurso(cursoData) {
         try {
-            cursos.push(cursoData);  // Esto es temporal
+            cursos.push(cursoData);
             return cursoData;
         } catch (err) {
             throw new Error('Error al crear curso: ' + err.message);
         }
     }
 
-    // Obtener todos los cursos
+
     static async obtenerCursos() {
         try {
-            return cursos; // Temporal
+            return cursos; 
         } catch (err) {
             throw new Error('Error al obtener cursos: ' + err.message);
         }
     }
 
-    // Obtener un curso por ID
+
     static async obtenerCurso(id) {
         try {
-            return cursos.find(curso => curso.cursoId === id);  // Temporal
+            return cursos.find(curso => curso.cursoId === id);  
         } catch (err) {
             throw new Error('Error al obtener el curso: ' + err.message);
         }
     }
 
-    // Actualizar un curso
+
     static async actualizarCurso(id, cursoData) {
         try {
             let index = cursos.findIndex(curso => curso.cursoId === id);
@@ -42,7 +41,7 @@ class CursoService {
         }
     }
 
-    // Eliminar un curso
+
     static async eliminarCurso(id) {
         try {
             let index = cursos.findIndex(curso => curso.cursoId === id);

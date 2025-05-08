@@ -3,12 +3,12 @@ const path = require('path');
 
 const rawDataPath = path.join(__dirname, '../raw_data');
 
-// Asegura que la carpeta raw_data exista
+
 if (!fs.existsSync(rawDataPath)) {
     fs.mkdirSync(rawDataPath);
 }
 
-// Define datos de ejemplo para cada colección
+
 const estudiantes = [
     ['estudianteId','identificacionType','identificacionNumber','firstName','secondName','apellido','email','telefono','cursoId'],
     ['estudiante01','CC','123456789','Juan','Carlos','Pérez','juan.perez@gmail.com','3101234567','curso01'],
@@ -33,14 +33,14 @@ const cursos = [
     ['curso02','CS102','Estructuras de Datos','2023-07-01','2023-10-01','80 horas','aula02','profesor02']
 ];
 
-// Función para crear un archivo CSV
+
 const crearCSV = (nombreArchivo, data) => {
     const contenido = data.map(fila => fila.join(',')).join('\n');
     fs.writeFileSync(path.join(rawDataPath, `${nombreArchivo}.csv`), contenido);
     console.log(`✔️ ${nombreArchivo}.csv creado con éxito`);
 };
 
-// Crear todos los archivos
+
 crearCSV('Estudiante', estudiantes);
 crearCSV('Profesor', profesores);
 crearCSV('Aula', aulas);

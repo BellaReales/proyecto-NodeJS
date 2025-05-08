@@ -1,36 +1,33 @@
-// services/profesorService.js
 const { profesores } = require('../models/profesorModel');
 
 class ProfesorService {
     // Crear un profesor
     static async crearProfesor(profesorData) {
         try {
-            profesores.push(profesorData);  // Temporal
+            profesores.push(profesorData);  
             return profesorData;
         } catch (err) {
             throw new Error('Error al crear profesor: ' + err.message);
         }
     }
 
-    // Obtener todos los profesores
     static async obtenerProfesores() {
         try {
-            return profesores;  // Temporal
+            return profesores; 
         } catch (err) {
             throw new Error('Error al obtener profesores: ' + err.message);
         }
     }
 
-    // Obtener un profesor por ID
     static async obtenerProfesor(id) {
         try {
-            return profesores.find(prof => prof.profesorId === id);  // Temporal
+            return profesores.find(prof => prof.profesorId === id); 
         } catch (err) {
             throw new Error('Error al obtener el profesor: ' + err.message);
         }
     }
 
-    // Actualizar un profesor
+
     static async actualizarProfesor(id, profesorData) {
         try {
             let index = profesores.findIndex(prof => prof.profesorId === id);
@@ -42,7 +39,7 @@ class ProfesorService {
         }
     }
 
-    // Eliminar un profesor
+
     static async eliminarProfesor(id) {
         try {
             let index = profesores.findIndex(prof => prof.profesorId === id);

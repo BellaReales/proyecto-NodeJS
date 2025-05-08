@@ -1,37 +1,36 @@
-// services/estudianteService.js
-const { estudiantes } = require('../models/estudianteModel'); // Puedes conectar esto con tu base de datos luego
 
+const { estudiantes } = require('../models/estudianteModel');
 class EstudianteService {
-    // Crear un estudiante
+
     static async crearEstudiante(estudianteData) {
         try {
-            // Aquí iría la lógica para insertar en la base de datos (MongoDB)
-            estudiantes.push(estudianteData);  // Esto es temporal, solo para demostrar
+
+            estudiantes.push(estudianteData);  
             return estudianteData;
         } catch (err) {
             throw new Error('Error al crear estudiante: ' + err.message);
         }
     }
 
-    // Obtener todos los estudiantes
+
     static async obtenerEstudiantes() {
         try {
-            return estudiantes; // Esto es temporal, solo para demostrar
+            return estudiantes; 
         } catch (err) {
             throw new Error('Error al obtener estudiantes: ' + err.message);
         }
     }
 
-    // Obtener un estudiante por ID
+
     static async obtenerEstudiante(id) {
         try {
-            return estudiantes.find(est => est.estudianteId === id);  // Esto es temporal
+            return estudiantes.find(est => est.estudianteId === id);  
         } catch (err) {
             throw new Error('Error al obtener el estudiante: ' + err.message);
         }
     }
 
-    // Actualizar un estudiante
+
     static async actualizarEstudiante(id, estudianteData) {
         try {
             let index = estudiantes.findIndex(est => est.estudianteId === id);
@@ -43,7 +42,6 @@ class EstudianteService {
         }
     }
 
-    // Eliminar un estudiante
     static async eliminarEstudiante(id) {
         try {
             let index = estudiantes.findIndex(est => est.estudianteId === id);
