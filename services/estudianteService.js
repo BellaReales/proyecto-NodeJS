@@ -1,55 +1,24 @@
+const Estudiante = require('../models/Estudiante');
 
-const { estudiantes } = require('../models/estudianteModel');
 class EstudianteService {
-
     static async crearEstudiante(estudianteData) {
-        try {
-
-            estudiantes.push(estudianteData);  
-            return estudianteData;
-        } catch (err) {
-            throw new Error('Error al crear estudiante: ' + err.message);
-        }
+        return await Estudiante.create(estudianteData);
     }
-
 
     static async obtenerEstudiantes() {
-        try {
-            return estudiantes; 
-        } catch (err) {
-            throw new Error('Error al obtener estudiantes: ' + err.message);
-        }
+        return await Estudiante.find();
     }
-
 
     static async obtenerEstudiante(id) {
-        try {
-            return estudiantes.find(est => est.estudianteId === id);  
-        } catch (err) {
-            throw new Error('Error al obtener el estudiante: ' + err.message);
-        }
+        return await Estudiante.findOne({ estudianteId: id });
     }
 
-
     static async actualizarEstudiante(id, estudianteData) {
-        try {
-            let index = estudiantes.findIndex(est => est.estudianteId === id);
-            if (index === -1) return null;
-            estudiantes[index] = { ...estudiantes[index], ...estudianteData };
-            return estudiantes[index];
-        } catch (err) {
-            throw new Error('Error al actualizar el estudiante: ' + err.message);
-        }
+        return await Estudiante.findOneAndUpdate({ estudianteId: id }, estudianteData, { new: true });
     }
 
     static async eliminarEstudiante(id) {
-        try {
-            let index = estudiantes.findIndex(est => est.estudianteId === id);
-            if (index === -1) return null;
-            return estudiantes.splice(index, 1);
-        } catch (err) {
-            throw new Error('Error al eliminar el estudiante: ' + err.message);
-        }
+        return await Estudiante.findOneAndDelete({ estudianteId: id });
     }
 }
 

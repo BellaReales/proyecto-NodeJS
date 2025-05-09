@@ -1,8 +1,7 @@
-// controllers/cursoController.js
 const CursoService = require('../services/cursoService');
 
 class CursoController {
-    // Crear un curso
+
     static async crearCurso(req, res) {
         try {
             const curso = await CursoService.crearCurso(req.body);
@@ -12,7 +11,7 @@ class CursoController {
         }
     }
 
-    // Obtener todos los cursos
+
     static async obtenerCursos(req, res) {
         try {
             const cursos = await CursoService.obtenerCursos();
@@ -22,7 +21,7 @@ class CursoController {
         }
     }
 
-    // Obtener un curso por ID
+
     static async obtenerCurso(req, res) {
         try {
             const curso = await CursoService.obtenerCurso(req.params.id);
@@ -35,7 +34,7 @@ class CursoController {
         }
     }
 
-    // Actualizar un curso
+
     static async actualizarCurso(req, res) {
         try {
             const cursoActualizado = await CursoService.actualizarCurso(req.params.id, req.body);
@@ -48,7 +47,7 @@ class CursoController {
         }
     }
 
-    // Eliminar un curso
+
     static async eliminarCurso(req, res) {
         try {
             const cursoEliminado = await CursoService.eliminarCurso(req.params.id);

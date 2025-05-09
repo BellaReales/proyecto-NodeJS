@@ -1,8 +1,8 @@
-// controllers/aulaController.js
+
 const AulaService = require('../services/aulaService.js');
 
 class AulaController {
-    // Crear un aula
+
     static async crearAula(req, res) {
         try {
             const aula = await AulaService.crearAula(req.body);
@@ -12,7 +12,6 @@ class AulaController {
         }
     }
 
-    // Obtener todas las aulas
     static async obtenerAulas(req, res) {
         try {
             const aulas = await AulaService.obtenerAulas();
@@ -22,7 +21,7 @@ class AulaController {
         }
     }
 
-    // Obtener un aula por ID
+
     static async obtenerAula(req, res) {
         try {
             const aula = await AulaService.obtenerAula(req.params.id);
@@ -35,7 +34,7 @@ class AulaController {
         }
     }
 
-    // Actualizar un aula
+
     static async actualizarAula(req, res) {
         try {
             const aulaActualizada = await AulaService.actualizarAula(req.params.id, req.body);
@@ -48,7 +47,7 @@ class AulaController {
         }
     }
 
-    // Eliminar un aula
+
     static async eliminarAula(req, res) {
         try {
             const aulaEliminada = await AulaService.eliminarAula(req.params.id);

@@ -1,8 +1,7 @@
-// controllers/estudianteController.js
 const EstudianteService = require('../services/estudianteService');
 
 class EstudianteController {
-    // Crear un estudiante
+
     static async crearEstudiante(req, res) {
         try {
             const estudiante = await EstudianteService.crearEstudiante(req.body);
@@ -12,7 +11,7 @@ class EstudianteController {
         }
     }
 
-    // Obtener todos los estudiantes
+
     static async obtenerEstudiantes(req, res) {
         try {
             const estudiantes = await EstudianteService.obtenerEstudiantes();
@@ -22,7 +21,6 @@ class EstudianteController {
         }
     }
 
-    // Obtener un estudiante por ID
     static async obtenerEstudiante(req, res) {
         try {
             const estudiante = await EstudianteService.obtenerEstudiante(req.params.id);
@@ -35,7 +33,7 @@ class EstudianteController {
         }
     }
 
-    // Actualizar un estudiante
+
     static async actualizarEstudiante(req, res) {
         try {
             const estudianteActualizado = await EstudianteService.actualizarEstudiante(req.params.id, req.body);
@@ -48,7 +46,7 @@ class EstudianteController {
         }
     }
 
-    // Eliminar un estudiante
+
     static async eliminarEstudiante(req, res) {
         try {
             const estudianteEliminado = await EstudianteService.eliminarEstudiante(req.params.id);

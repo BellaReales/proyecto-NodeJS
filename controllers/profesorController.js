@@ -1,8 +1,7 @@
-// controllers/profesorController.js
 const ProfesorService = require('../services/profesorService');
 
 class ProfesorController {
-    // Crear un profesor
+
     static async crearProfesor(req, res) {
         try {
             const profesor = await ProfesorService.crearProfesor(req.body);
@@ -12,7 +11,7 @@ class ProfesorController {
         }
     }
 
-    // Obtener todos los profesores
+
     static async obtenerProfesores(req, res) {
         try {
             const profesores = await ProfesorService.obtenerProfesores();
@@ -22,7 +21,6 @@ class ProfesorController {
         }
     }
 
-    // Obtener un profesor por ID
     static async obtenerProfesor(req, res) {
         try {
             const profesor = await ProfesorService.obtenerProfesor(req.params.id);
@@ -35,7 +33,7 @@ class ProfesorController {
         }
     }
 
-    // Actualizar un profesor
+
     static async actualizarProfesor(req, res) {
         try {
             const profesorActualizado = await ProfesorService.actualizarProfesor(req.params.id, req.body);
@@ -48,7 +46,6 @@ class ProfesorController {
         }
     }
 
-    // Eliminar un profesor
     static async eliminarProfesor(req, res) {
         try {
             const profesorEliminado = await ProfesorService.eliminarProfesor(req.params.id);
