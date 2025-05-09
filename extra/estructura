@@ -1,0 +1,33 @@
+AcmeSchool
+├── src/
+│   ├── controllers/
+│   │   ├── cursoController.js
+│   │   ├── estudianteController.js
+│   │   └── reportsController.js
+│   ├── models/
+│   │   ├── Aula.js
+│   │   ├── Curso.js
+│   │   ├── Estudiante.js
+│   │   └── Profesor.js
+│   ├── routes/
+│   │   ├── cursoRoutes.js
+│   │   ├── estudianteRoutes.js
+│   │   └── reportRoutes.js
+│   ├── services/
+│   │   ├── cursoService.js
+│   │   ├── estudianteService.js
+│   │   └── reportsService.js
+│   ├── config/
+│   │   └── database.js   
+│   │   ├── validator.js
+│   │   └── helperFunctions.js
+│   └── app.js            
+├── .env
+├── package.json
+└── package-lock.json
+
+raw_data/
+├── estudiantes.csv
+├── cursos.csv
+├── profesores.csv
+└── aulas.csv

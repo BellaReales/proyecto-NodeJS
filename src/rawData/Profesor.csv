@@ -1,0 +1,3 @@
+profesorId,nombre,apellido,email,telefono,cursoId
+profesor01,Jose,Rodriguez,jose01rodriguez@gmail.com,3115294917,curso01
+profesor02,Laura,Ramirez,laura.ramirez@gmail.com,3123456789,curso02
